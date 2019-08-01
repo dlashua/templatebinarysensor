@@ -56,6 +56,6 @@ If you want to contribute to this please read the [Contribution guidelines](CONT
 [forum-shield]: https://img.shields.io/badge/community-forum-brightgreen.svg?style=for-the-badge
 [forum]: https://community.home-assistant.io/
 [license-shield]: https://img.shields.io/github/license/dlashua/templatebinarysensor.svg?style=for-the-badge
-[maintenance-shield]: https://img.shields.io/badge/maintainer-Daniel%20Lashua20%40dlashua-blue.svg?style=for-the-badge
+[maintenance-shield]: https://img.shields.io/badge/maintainer-Daniel%20Lashua%20%40dlashua-blue.svg?style=for-the-badge
 [releases-shield]: https://img.shields.io/github/release/dlashua/templatebinarysensor.svg?style=for-the-badge
 [releases]: https://github.com/dlashua/templatebinarysensor/releases
