@@ -52,7 +52,7 @@ class TemplateBinarySensorFlowHandler(config_entries.ConfigFlow):
             if "template" in user_input:
                 template = user_input["template"]
             if "device_class" in user_input:
-                icon = user_input["device_class"]
+                device_class = user_input["device_class"]
 
         data_schema = OrderedDict()
         data_schema[vol.Required("name", default=name)] = str
