@@ -1,4 +1,4 @@
-"""Adds config flow for templatesensor."""
+"""Adds config flow for templatebinarysensor."""
 from collections import OrderedDict
 import logging
 import voluptuous as vol
@@ -12,8 +12,8 @@ _LOGGER = logging.getLogger(__name__)
 
 
 @config_entries.HANDLERS.register(DOMAIN)
-class TemplateSensorFlowHandler(config_entries.ConfigFlow):
-    """Config flow for templatesensor."""
+class TemplateBinarySensorFlowHandler(config_entries.ConfigFlow):
+    """Config flow for templatebinarysensor."""
 
     VERSION = 1
     CONNECTION_CLASS = config_entries.CONN_CLASS_LOCAL_POLL
@@ -44,24 +44,20 @@ class TemplateSensorFlowHandler(config_entries.ConfigFlow):
         # Defaults
         name = ""
         template = ""
-        icon = ""
-        unit = ""
+        device_class = ""
 
         if user_input is not None:
             if "name" in user_input:
                 name = user_input["name"]
             if "template" in user_input:
                 template = user_input["template"]
-            if "icon" in user_input:
-                icon = user_input["icon"]
-            if "unit" in user_input:
-                unit = user_input["unit"]
+            if "device_class" in user_input:
+                icon = user_input["device_class"]
 
         data_schema = OrderedDict()
         data_schema[vol.Required("name", default=name)] = str
         data_schema[vol.Required("template", default=template)] = str
-        data_schema[vol.Optional("icon", default=icon)] = str
-        data_schema[vol.Optional("unit", default=unit)] = str
+        data_schema[vol.Optional("device_class", default=device_class)] = str
         return self.async_show_form(
             step_id="user", data_schema=vol.Schema(data_schema), errors=self._errors
         )

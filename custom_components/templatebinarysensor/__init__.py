@@ -1,8 +1,8 @@
 """
-Component to integrate with blueprint.
+templatebinarysensor component
 
 For more details about this component, please refer to
-https://github.com/custom-components/blueprint
+https://github.com/dlashua/templatebinarysensor
 """
 import os
 from datetime import timedelta
@@ -34,7 +34,7 @@ async def async_setup_entry(hass, config_entry):
 
     # Add sensor
     hass.async_add_job(
-        hass.config_entries.async_forward_entry_setup(config_entry, "sensor")
+        hass.config_entries.async_forward_entry_setup(config_entry, "binary_sensor")
     )
     return True
 
@@ -61,7 +61,9 @@ async def check_files(hass):
 async def async_remove_entry(hass, config_entry):
     """Handle removal of an entry."""
     try:
-        await hass.config_entries.async_forward_entry_unload(config_entry, "sensor")
-        _LOGGER.info("Successfully removed sensor")
+        await hass.config_entries.async_forward_entry_unload(
+            config_entry, "binary_sensor"
+        )
+        _LOGGER.info("Successfully removed binary_sensor")
     except ValueError:
         pass

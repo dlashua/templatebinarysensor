@@ -1,15 +1,15 @@
-"""Sensor platform for templatesensor."""
+"""Sensor platform for templatebinarysensor."""
 from homeassistant.helpers.entity import Entity
 from homeassistant.helpers import template as templater
 
 
 async def async_setup_entry(hass, config_entry, async_add_devices):
     """Setup sensor platform."""
-    async_add_devices([CustomTemplateSensor(hass, config_entry)], True)
+    async_add_devices([CustomTemplateBinarySensor(hass, config_entry)], True)
 
 
-class CustomTemplateSensor(Entity):
-    """CustomTemplateSensor class."""
+class CustomTemplateBinarySensor(Entity):
+    """CustomTemplateBinarySensor class."""
 
     def __init__(self, hass, config):
         self.hass = hass
@@ -19,10 +19,14 @@ class CustomTemplateSensor(Entity):
     async def async_update(self):
         """Update the sensor."""
         try:
-            self._state = templater.Template(
+            state = templater.Template(
                 self.config.data.get("template"), self.hass
             ).async_render()
-        except Exception as exception:
+            if state == "True":
+                self._state = "on"
+            else:
+                self._state = "off"
+        except Exception:
             self._state = self._state
 
     @property
@@ -41,11 +45,7 @@ class CustomTemplateSensor(Entity):
         return self._state
 
     @property
-    def unit_of_measurement(self):
-        """Return the unit_of_measurement of the sensor."""
-        return self.config.data.get("unit")
+    def device_class(self):
+        """Return the device_class of the sensor."""
+        return self.config.data.get("device_class")
 
-    @property
-    def icon(self):
-        """Return the icon of the sensor."""
-        return self.config.data.get("icon")
