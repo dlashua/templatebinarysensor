@@ -2,7 +2,7 @@
 # Base component constants
 DOMAIN = "templatebinarysensor"
 DOMAIN_DATA = f"{DOMAIN}_data"
-VERSION = "0.0.1"
+VERSION = "0.0.2"
 PLATFORMS = ["binary_sensor"]
 REQUIRED_FILES = [
     ".translations/en.json",
