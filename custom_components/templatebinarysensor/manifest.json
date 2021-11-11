@@ -1,6 +1,7 @@
 {
   "domain": "templatebinarysensor",
   "name": "UI Template binary_sensor configuration",
+  "version": "0.0.2",
   "documentation": "https://github.com/dlashua/templatebinarysensor",
   "dependencies": [],
   "config_flow": true,
