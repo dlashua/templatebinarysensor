@@ -10,6 +10,7 @@ import logging
 import voluptuous as vol
 from homeassistant import config_entries
 import homeassistant.helpers.config_validation as cv
+from homeassistant.const import Platform
 from homeassistant.helpers import discovery
 from homeassistant.util import Throttle
 
@@ -34,7 +35,7 @@ async def async_setup_entry(hass, config_entry):
 
     # Add sensor
     hass.async_add_job(
-        hass.config_entries.async_forward_entry_setup(config_entry, "binary_sensor")
+        hass.config_entries.async_forward_entry_setups(config_entry, [Platform.BINARY_SENSOR])
     )
     return True
 
